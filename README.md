@@ -17,7 +17,7 @@ MyTinySTL
   * msvc 14.0 或以上
 
 ## 需要
-  * 使用 cmake 2.8 来构建项目（**可选**）
+  * 使用 cmake 3.5 或以上来构建项目（**可选**）
 
 ## 运行
 
@@ -66,7 +66,7 @@ This is a `tinySTL` based on `C++11`, which is my first project for practice. I 
 
 ## Required
 
-* Use cmake 2.8 to build this project (**Optional**)
+* Use cmake 3.5 or later to build this project (**Optional**)
 
 ## Run test
 

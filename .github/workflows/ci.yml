@@ -13,14 +13,14 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # ubuntu-18.04 provides gcc/g++ 7 by default (replaces travis gcc-7)
-          - os: ubuntu-18.04
-            cc: gcc-7
-            cxx: g++-7
-          # ubuntu-20.04 provides gcc/g++ 9 by default
-          - os: ubuntu-20.04
-            cc: gcc-9
-            cxx: g++-9
+          # ubuntu-22.04 provides gcc/g++ 11 by default
+          - os: ubuntu-22.04
+            cc: gcc-11
+            cxx: g++-11
+          # ubuntu-24.04 provides gcc/g++ 13 by default
+          - os: ubuntu-24.04
+            cc: gcc-13
+            cxx: g++-13
           # macos provides clang by default (replaces travis xcode5-8 clang)
           - os: macos-latest
             cc: clang
