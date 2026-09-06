@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # ubuntu-18.04 provides gcc/g++ 7 by default (replaces travis gcc-7)
+          - os: ubuntu-18.04
+            cc: gcc-7
+            cxx: g++-7
+          # ubuntu-20.04 provides gcc/g++ 9 by default
+          - os: ubuntu-20.04
+            cc: gcc-9
+            cxx: g++-9
+          # macos provides clang by default (replaces travis xcode5-8 clang)
+          - os: macos-latest
+            cc: clang
+            cxx: clang++
+
+    env:
+      CC: ${{ matrix.cc }}
+      CXX: ${{ matrix.cxx }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show compiler version
+        run: |
+          ${{ matrix.cc }} --version
+          ${{ matrix.cxx }} --version
+
+      - name: Build and test
+        run: |
+          mkdir build && cd build
+          cmake ..
+          make
+          cd ../bin && ./stltest
